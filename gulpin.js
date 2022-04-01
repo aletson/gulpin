@@ -32,13 +32,13 @@ client.on('ready', () => {
 });
 
 client.on('message', async message => {
-    if (foodwords.some(word => message.includes(word))) {
+    if (foodwords.some(word => message.toString().includes(word))) {
         if (!servers[message.server.id]) {
             servers[message.server.id] = Date.now() - 1810000;
         }
         var usable_responses = responses;
         for (const thisBonus of bonuses) {
-            if (message.includes(thisBonus.word)) {
+            if (message.toString().includes(thisBonus.word)) {
                 usable_responses.push(thisBonus.response);
             }
         };
