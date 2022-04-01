@@ -33,7 +33,7 @@ client.on('ready', () => {
 
 client.on('message', async message => {
     if (foodwords.some(word => message.toString().includes(word))) {
-        if (!servers[message.server.id]) {
+        if (servers[message.server.id] === undefined) {
             servers[message.server.id] = Date.now() - 1810000;
         }
         var usable_responses = responses;
