@@ -34,11 +34,12 @@ client.on('ready', () => {
 client.on('message', async message => {
     if (foodwords.some(word => message.toString().includes(word))) {
         console.log(message.toString());
-        console.log(message.guild.id);
-        if (typeof servers[message.guild.id] === undefined) {
-            servers[message.guild.id] = Date.now() - 1810000;
+        var guildId = message.guild.id;
+        var server = servers.find(server => server.id == guildId);
+        if (typeof server === undefined) {
+            server = {server: guildId, timestamp: Date.now() - 1810000}
+            servers.push(server);
         }
-        console.log(servers[message.guild.id]);
         var usable_responses = responses;
         for (const thisBonus of bonuses) {
             if (message.toString().includes(thisBonus.word)) {
@@ -46,8 +47,10 @@ client.on('message', async message => {
                 usable_responses.push(thisBonus.response);
             }
         };
-        if(servers[message.guild.id] < Date.now() - 1800000) {
+        if(server.timestamp < Date.now() - 1800000) {
             message.channel.send(usable_responses[Math.floor(Math.random()*usable_responses.length)]);
+            var index = servers.findIndex(server => server.id == guildId);
+            servers[index].timestamp = Date.now();
         }
     } else {
         console.log('not detect');
