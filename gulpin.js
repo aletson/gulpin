@@ -49,6 +49,8 @@ client.on('message', async message => {
         if(servers[message.guild.id] < Date.now() - 1800000) {
             message.channel.send(usable_responses[Math.floor(Math.random()*usable_responses.length)]);
         }
+    } else {
+        console.log('not detect');
     }
 });
 
