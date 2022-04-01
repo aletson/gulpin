@@ -38,6 +38,7 @@ client.on('message', async message => {
         var server = servers.find(server => server.id == guildId);
         if (typeof server === undefined) {
             server = {server: guildId, timestamp: Date.now() - 1810000}
+            console.log(server);
             servers.push(server);
         }
         var usable_responses = responses;
