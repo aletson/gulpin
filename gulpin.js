@@ -41,6 +41,7 @@ client.on('message', async message => {
             console.log(server);
             servers.push(server);
         }
+        console.log(server);
         var usable_responses = responses;
         for (const thisBonus of bonuses) {
             if (message.toString().includes(thisBonus.word)) {
