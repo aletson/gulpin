@@ -34,9 +34,11 @@ client.on('ready', () => {
 client.on('message', async message => {
     if (foodwords.some(word => message.toString().includes(word))) {
         console.log(message.toString());
+        console.log(message.guild.id);
         if (typeof servers[message.guild.id] === undefined) {
             servers[message.guild.id] = Date.now() - 1810000;
         }
+        console.log(servers[message.guild.id]);
         var usable_responses = responses;
         for (const thisBonus of bonuses) {
             if (message.toString().includes(thisBonus.word)) {
