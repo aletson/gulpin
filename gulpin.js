@@ -37,7 +37,7 @@ client.on('message', async message => {
         var guildId = message.guild.id;
         var server = servers.find(server => server.id == guildId);
         if (server === undefined) {
-            server = {server: guildId, timestamp: Date.now() - 1810000}
+            server = {id: guildId, timestamp: Date.now() - 1810000}
             console.log(server);
             await servers.push(server);
         }
@@ -52,6 +52,7 @@ client.on('message', async message => {
         if(server.timestamp < Date.now() - 1800000) {
             message.channel.send(usable_responses[Math.floor(Math.random()*usable_responses.length)]);
             var index = servers.findIndex(server => server.id == guildId);
+            console.log(index);
             servers[index].timestamp = Date.now();
         }
     } else {
