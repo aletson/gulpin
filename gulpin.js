@@ -42,7 +42,7 @@ client.on('message', async message => {
                 usable_responses.push(thisBonus.response);
             }
         };
-        if(servers[message.server.id] < Date.now() - 1800000) {
+        if(servers[message.guild.id] < Date.now() - 1800000) {
             message.channel.send(usable_responses[Math.floor(Math.random()*usable_responses.length)]);
         }
     }
