@@ -12,9 +12,7 @@
       "start": "node gulpin.js"
     },
     "dependencies": {
-      "discord.js": "latest",
-      "finalhandler": "latest",
-      "router": "latest"
+      "discord.js": "latest"
     },
     "repository": {
       "type": "git",

@@ -1,9 +1,6 @@
 /*jslint es6*/
 const Discord = require('discord.js');
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
-var http = require('http');
-var Router = require('router');
-var finalhandler = require('finalhandler');
 console.log(process.env.app_token);
 client.login(process.env.app_token);
 
@@ -55,8 +52,6 @@ client.on('message', async message => {
             console.log(index);
             servers[index].timestamp = Date.now();
         }
-    } else {
-        console.log('not detect');
     }
 });
 
