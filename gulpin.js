@@ -28,7 +28,11 @@ client.on('ready', () => {
     client.user.setActivity("Sushi-Go-Round");
 });
 
-client.on('message', async message => {
+client.on('threadCreate', thread => {
+    if (thread.joinable) thread.join();
+});
+
+client.on('messageCreate', async message => {
     if (foodwords.some(word => message.toString().toLowerCase().includes(word))) {
         console.log(message.toString());
         var guildId = message.guild.id;
